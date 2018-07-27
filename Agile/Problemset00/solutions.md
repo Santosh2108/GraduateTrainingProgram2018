@@ -31,7 +31,7 @@ Scrum Artifacts provide key information that the Scrum Team and the stakeholders
 Product Backlog,Sprint Backlog and Product Increment are the artifacts of scrum process.
 
 7)What do you understand by sprint backlog?
-
+The sprint backlog is a list of tasks identified by the Scrum team to be completed during the Scrum sprint.
 
 8)What is the role of the Product Owner?
 The product owner is a role on a product development team responsible for managing the product backlog which is used to achieve
