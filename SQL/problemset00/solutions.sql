@@ -1,5 +1,5 @@
 -- ProblemSet<00>,July <25> <2018>
--- Submission by <sai.s.kumar.gopagoni@accenture.comd> 
+-- Submission by <sai.s.kumar.gopagoni@accenture.com> 
 
 1)Select the Employee with the top three salaries
 Select * from EMPLOYEE order by SALARY desc limit 3;
