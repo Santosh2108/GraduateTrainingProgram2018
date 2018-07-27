@@ -3,7 +3,7 @@
 
 1)How does agile testing (development) methodology differ from other testing (development) methodologies?
 Agile is flexible and it responds to the changes given according to the scale.Agile involves participation of customers which helps to
-get desired product.It main give business value to the customer.These may miss on other methodologies.
+get desired product.It mainly gives business value to the customer.These may miss on other methodologies.
 
 2)What are the most important components of Agile?
 1. Individuals and Interactions Over Processes and Tools
