@@ -1,4 +1,8 @@
+-- ProblemSet<00>,July <31> <2018>
+-- Submission by <sai.s.kumar.gopagoni@accenture.com> 
+
 CREATE TABLE GUEST (GUEST_NO CHAR(4) PRIMARY KEY, NAME CHAR(20),CITY CHAR(20));
+Table Created.
 INSERT INTO GUEST VALUES('G256','ADAM WAYNE','PITTSBURGH');
 INSERT INTO GUEST VALUES('G367','TARA CUMMINGS','BALTIMORE');
 INSERT INTO GUEST VALUES('G879','VANESSA PARRY','PITTSBURGH');
@@ -18,6 +22,7 @@ INSERT INTO HOTEL VALUES("H437","CLAIRMONT HOTEL","BOSTON");
 
 
 CREATE TABLE ROOM(ROOM_NO INTEGER PRIMARY KEY,HOTEL_NO VARCHAR REFERENCES HOTEL(HOTEL_NO),TYPE VARCHAR,PRICE INTEGER);
+Table Created.
 INSERT INTO ROOM VALUES(313,'H111','S',145.00);
 INSERT INTO ROOM VALUES(412,'H111','N',145.00);
 INSERT INTO ROOM VALUES(1267,'H235','N',175.00);
@@ -60,10 +65,14 @@ H498|JAMES PLAZA|TORONTO
 H193|DEVON HOTEL|BOSTON
 H437|CLAIRMONT HOTEL|BOSTON
 
+Record Count:6
+
 2)List full details of all hotels in New York.
 Select * from hotel where city='NEW YORK';
 H111|EMPIRE HOTEL|NEW YORK
 H235|PARK PLACE|NEW YORK
+
+Record Count:2
 
 3)List the names and cities of all guests, ordered according to their cities
 Select name,city from guest order by city;
@@ -73,6 +82,8 @@ EDWARD CANE|BALTIMORE
 TOM HANCOCK|PHILADELPHIA
 ADAM WAYNE|PITTSBURGH
 VANESSA PARRY|PITTSBURGH
+
+Record Count:6
 
 4)List all details for non-smoking rooms in ascending order of price.
 select * from room where type='N' order by price;
@@ -85,9 +96,13 @@ select * from room where type='N' order by price;
 467|H498|N|180
 1289|H235|N|195
 
+Record Count:8
+
 5)List the number of hotels there are.
 select count(*) from hotel;
 6
+
+Record Count:1
 
 6)List the cities in which guests live. Each city should be listed only once.
 Select DISTINCT city from guest;
@@ -96,9 +111,13 @@ BALTIMORE
 PHILADELPHIA
 ATLANTA
 
+Record Count:4
+
 7)List the average price of a room.
 Select AVG(price) from room;
 155.666666666667
+
+Record Count:1
 
 8)List hotel names, their room numbers, and the type of that room.
 Select h.name,r.room_no,r.type from hotel h join room r where r.hotel_no=h.hotel_no;
@@ -115,20 +134,28 @@ DEVON HOTEL|1201|N
 PARK PLACE|1267|N
 PARK PLACE|1289|N
 
+Record Count:12
+
 9)List the hotel names, booking dates, and room numbers for all hotels in New York.
 Select h.name,b.date_from,b.date_to,b.room_no from hotel h join booking b where h.hotel_no=b.hotel_no and city='NEW YORK';
 EMPIRE HOTEL|10-AUG-99|15-AUG-99|412
 EMPIRE HOTEL|18-AUG-99|21-AUG-99|412
 PARK PLACE|05-SEP-99|12-SEP-99|1267
 
+Record Count:3
+
 10)What is the number of bookings that started in the month of September?
 Select count(*) from booking where date_from like'%SEP%';
 4
+
+Record Count:1
 
 11)List the names and cities of guests who began a stay in New York in August.
  Select g.name,g.city from guest g join booking b on g.guest_no=b.guest_no join hotel h on h.hotel_no=b.hotel_no where date_from like '%AUG%' and h.city='NEW YORK';
 ADAM WAYNE|PITTSBURGH
 TARA CUMMINGS|BALTIMORE
+
+Record Count:2
 
 12)List the hotel names and room numbers of any hotel rooms that have not been booked.
 Select h.name,r.room_no from hotel h join room r on h.hotel_no=r.hotel_no where r.room_no not in(select room_no from booking);
@@ -138,9 +165,13 @@ BROWNSTONE HOTEL|876
 BROWNSTONE HOTEL|898
 PARK PLACE|1289
 
+Record Count:5
+
 13)List the hotel name and city of the hotel with the highest priced room.
 Select h.name,h.city from hotel h join room r on h.hotel_no=r.hotel_no where price =(select max(price) from room);
 PARK PLACE|NEW YORK
+
+Record Count:1
 
 14)List hotel names, room numbers, cities, and prices for hotels that have rooms with prices lower than the lowest priced room in a Boston hotel.
 select h.name,h.city,r.room_no,r.price from hotel h join room r on r.hotel_no=h.hotel_no where price < (select min(r.price) from hotel h join room r on 
@@ -148,8 +179,12 @@ h.hotel_no=r.hotel_no where h.city='BOSTON');
 BROWNSTONE HOTEL|TORONTO|876|124
 BROWNSTONE HOTEL|TORONTO|898|124
 
+Record Count:2
+
 15)List the average price of a room grouped by city.
 select h.city, avg(r.price) from room r join hotel h on h.hotel_no=r.hotel_no group by h.city;
 BOSTON|155.0
 NEW YORK|165.0
 TORONTO|147.0
+
+Record Count:3
